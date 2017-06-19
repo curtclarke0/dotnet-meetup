@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Notes.WebApp.Models
 {
     public class Data
     {
         public string Message { get; set; }
+        public string Title { get; set; }
+        public string Summary { get; set; }
+        public DateTime Date { get; set; }
     }
 }

@@ -1,16 +1,14 @@
-﻿@model Notes.WebApp.Models.Data
+﻿@model IEnumerable<Notes.WebApp.Models.Data>
 
+@{ 
+    Layout = "~/Views/_Layout.cshtml";
+}
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Notes</title>
-</head>
-<body>
-    <h1>
-        @Model.Message
-    </h1>
-</body>
-</html>
+<ul class="list-group">
+@foreach (var item in Model)
+{
+    <li class="list-group-item">
+        @Html.ActionLink(item.Title, "Details", new { title = item.Title })
+    </li>
+}
+</ul>
