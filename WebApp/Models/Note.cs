@@ -2,7 +2,7 @@
 
 namespace Notes.WebApp.Models
 {
-    public class Data
+    public class Note
     {
         public string Message { get; set; }
         public string Title { get; set; }

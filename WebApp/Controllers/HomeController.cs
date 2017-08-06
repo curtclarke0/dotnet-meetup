@@ -8,11 +8,11 @@ namespace Notes.WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        List<Data> noteData = new List<Data>()
+        List<Note> noteData = new List<Note>()
         {
-            new Data {Title = "Note1", Summary = "Hello", Date = DateTime.Now},
-            new Data {Title = "Note2", Summary = "Hello Meetup", Date = DateTime.Now},
-            new Data {Title = "Note3", Summary = "Bye", Date = DateTime.Now}
+            new Note {Title = "Note1", Summary = "Hello", Date = DateTime.Now},
+            new Note {Title = "Note2", Summary = "Hello Meetup", Date = DateTime.Now},
+            new Note {Title = "Note3", Summary = "Bye", Date = DateTime.Now}
         };
 
         // GET: Home
