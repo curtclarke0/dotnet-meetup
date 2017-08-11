@@ -3,29 +3,40 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using System.IO;
+using Notes.WebApp.Services;
 
 namespace Notes.WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        List<Note> noteData = new List<Note>()
+        NotesRepository notesRepository;
+
+        public HomeController()
         {
-            new Note {Title = "Note1", Summary = "Hello", Date = DateTime.Now},
-            new Note {Title = "Note2", Summary = "Hello Meetup", Date = DateTime.Now},
-            new Note {Title = "Note3", Summary = "Bye", Date = DateTime.Now}
-        };
+            notesRepository = new NotesRepository();
+        }
 
         // GET: Home
         public ActionResult Index()
         {
-            return View(noteData);
+            var notes = notesRepository.GetAll();
+
+            return View(notes);
         }
 
-        public ActionResult Details(string title)
+        public ActionResult Details(Guid id)
         {
-            var note = noteData.FirstOrDefault(item => item.Title.Equals(title, StringComparison.OrdinalIgnoreCase));
+            var note = notesRepository.Get(id);
 
             return View(note);
+        }
+
+        public ActionResult Update(Note note)
+        {
+            notesRepository.AddOrUpdate(note);
+
+            return RedirectToAction("Index");
         }
     }
 }
